@@ -1,4 +1,4 @@
-**Version: v1.0.0
+**Release 1
 Release Date: 01 November 2026
 Author: Nathan Dolan**
 
