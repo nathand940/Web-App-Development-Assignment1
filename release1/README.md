@@ -26,6 +26,7 @@ Release 1 focuses on building a stable base for all future features (placemarks,
 • Error handling and user feedback
 
 **Dashboard** 
+
 • Protected route (/dashboard)
 
 • Displays logged‑in user information
@@ -35,6 +36,7 @@ Release 1 focuses on building a stable base for all future features (placemarks,
 • Foundation for future placemark and admin features
 
 **Project Structure** 
+
 • Clean MVC layout
 
 • Controllers, routes, models, views
@@ -46,6 +48,7 @@ Release 1 focuses on building a stable base for all future features (placemarks,
 • Ready for JSON + Mongo stores in Release 2
 
 **Server Configuration**
+
 • Hapi server
 
 • Vision + Inert for views/static files
@@ -83,6 +86,7 @@ coffee-placemarks/
 └── server.js
 
 **Authentication Flow**
+
 User signs up → data stored in mem store
 
 User logs in → password validated via bcrypt
@@ -96,6 +100,7 @@ Dashboard displays authenticated user
 This flow forms the backbone of all future features.
 
 **Testing Status (Release 1)**
+
 Manual testing completed:
 
 • Signup form validation
@@ -115,6 +120,7 @@ Manual testing completed:
 Automated tests will be added in Release 3.
 
 **Technologies Used**
+
 • Node.js
 
 • Hapi.js
@@ -130,7 +136,9 @@ Automated tests will be added in Release 3.
 • Cookie Auth
 
 **Roadmap**
+
 **Release 2 – Placemark Core**
+
 • Placemark model
 
 • Add placemark form
@@ -142,6 +150,7 @@ Automated tests will be added in Release 3.
 • Basic placemark API
 
 **Release 3 – MongoDB + Categories + Images**
+
 • MongoDB integration
 
 • Category system
@@ -153,6 +162,7 @@ Automated tests will be added in Release 3.
 • Dashboard analytics
 
 **Release 4 – API + JWT + Swagger + Deployment**
+
 • Full REST API
 
 • JWT authentication
