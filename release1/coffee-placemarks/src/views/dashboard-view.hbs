@@ -1,0 +1,25 @@
+{{> menu active="dashboard"}}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Welcome, {{user.firstName}}!</h1>
+
+    <p class="subtitle">
+      This is your Coffee Placemark Dashboard.
+    </p>
+
+    <div class="box">
+      <p>Your email: <strong>{{user.email}}</strong></p>
+    </div>
+
+    <div class="box">
+      <p>More features coming soon:</p>
+      <ul>
+        <li>Add Coffee Placemark</li>
+        <li>View Your Placemarks</li>
+        <li>Account Settings</li>
+        <li>Admin Tools (if enabled)</li>
+      </ul>
+    </div>
+  </div>
+</section>
