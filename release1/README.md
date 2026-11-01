@@ -1,6 +1,8 @@
-**Release 1
-Release Date: 01 November 2026
-Author: Nathan Dolan**
+**Release 1**
+
+**Release Date: 01 November 2026**
+
+**Author: Nathan Dolan**
 
 CoffeePlacemark is a web application that allows users to create, manage, and explore coffee shop placemarks.
 This release establishes the core foundation of the system: user accounts, authentication, routing, and initial project structure.
