@@ -1,0 +1,28 @@
+<nav class="navbar is-light">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/dashboard">
+      CoffeePlacemark
+    </a>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <a id="dashboard" class="navbar-item" href="/dashboard">Dashboard</a>
+      <a id="settings" class="navbar-item" href="/settings">Settings</a>
+      <a id="admin" class="navbar-item" href="/admin/users">Admin</a>
+      <a id="about" class="navbar-item" href="/about">About</a>
+      <a id="logout" class="navbar-item" href="/logout">Logout</a>
+
+    </div>
+  </div>
+</nav>
+
+<script>
+  const active = "{{active}}";
+  if (active) {
+    const el = document.getElementById(active);
+    if (el) el.classList.add("is-active");
+  }
+</script>
+
+
