@@ -1,0 +1,63 @@
+{{> menu active="admin"}}
+
+<section class="section">
+  <div class="container">
+
+    <h1 class="title">Admin Dashboard</h1>
+
+    <div class="columns">
+
+      <div class="column">
+        <div class="box has-text-centered">
+          <h2 class="subtitle">Users</h2>
+          <p class="title">{{userCount}}</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="box has-text-centered">
+          <h2 class="subtitle">Placemarks</h2>
+          <p class="title">{{placemarkCount}}</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="box has-text-centered">
+          <h2 class="subtitle">Categories</h2>
+          <p class="title">{{categoryCount}}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <hr />
+
+    <h2 class="subtitle">All Users</h2>
+
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each users}}
+          <tr>
+            <td>{{firstName}} {{lastName}}</td>
+            <td>{{email}}</td>
+            <td>
+              <a class="button is-danger is-small" href="/admin/delete/{{_id}}">
+                Delete
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+</section>
+

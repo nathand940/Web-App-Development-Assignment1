@@ -1,0 +1,45 @@
+{{> menu active="categories"}}
+
+<section class="section">
+  <div class="container">
+    <h1 class="title">Categories</h1>
+
+    <form action="/categories/add" method="POST" class="box">
+      <h2 class="subtitle">Add Category</h2>
+
+      <div class="field">
+        <label class="label">Name</label>
+        <input class="input" type="text" name="name" required />
+      </div>
+
+      <button class="button is-primary" type="submit">Add Category</button>
+    </form>
+
+    <hr />
+
+    <h2 class="subtitle">Your Categories</h2>
+
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each categories}}
+          <tr>
+            <td>{{name}}</td>
+            <td>
+              <a class="button is-danger is-small" href="/categories/delete/{{_id}}">
+                Delete
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
