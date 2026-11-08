@@ -1,0 +1,33 @@
+<section class="section">
+  <div class="container">
+    <h1 class="title">User Administration</h1>
+
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each users}}
+          <tr>
+            <td>{{firstName}}</td>
+            <td>{{lastName}}</td>
+            <td>{{email}}</td>
+            <td>
+              <a class="button is-danger is-small" href="/admin/delete/{{_id}}">
+                Delete
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <a href="/admin" class="button is-link">Back to Dashboard</a>
+  </div>
+</section>

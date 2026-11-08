@@ -1,0 +1,120 @@
+<section class="section">
+  <div class="container">
+
+    <h1 class="title">Your Coffee Placemarks</h1>
+
+    {{#if error}}
+      <div class="notification is-danger">{{error}}</div>
+    {{/if}}
+
+    <!-- ADD PLACEMARK FORM -->
+    <form action="/placemarks/add" method="POST" class="box">
+      <h2 class="subtitle">Add a New Placemark</h2>
+
+      <div class="field">
+        <label class="label">Name</label>
+        <input class="input" type="text" name="name" required />
+      </div>
+
+      <div class="field">
+        <label class="label">Description</label>
+        <input class="input" type="text" name="description" required />
+      </div>
+
+      <div class="field">
+        <label class="label">Location</label>
+        <input class="input" type="text" name="location" required />
+      </div>
+
+      <div class="field">
+        <label class="label">Category</label>
+        <div class="select is-fullwidth">
+          <select name="categoryId">
+            <option value="">None</option>
+            {{#each categories}}
+              <option value="{{_id}}">{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <button class="button is-primary" type="submit">Add Placemark</button>
+    </form>
+
+    <hr />
+
+    <!-- CATEGORY FILTER -->
+    <h2 class="subtitle">Filter by Category</h2>
+
+    <div class="field">
+      <div class="select is-fullwidth">
+        <select onchange="location = this.value;">
+          <option value="/placemarks">All Categories</option>
+          {{#each categories}}
+            <option value="/placemarks/category/{{_id}}"
+              {{#ifEquals ../selectedCategoryId _id}}selected{{/ifEquals}}>
+              {{name}}
+            </option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- PLACEMARK LIST -->
+    <h2 class="subtitle">Your Placemarks</h2>
+
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Category</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each placemarks}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{description}}</td>
+            <td>{{location}}</td>
+
+            <!-- CATEGORY NAME LOOKUP -->
+            <td>
+              {{#if categoryId}}
+                {{#each ../categories}}
+                  {{#ifEquals _id ../categoryId}}
+                    {{name}}
+                  {{/ifEquals}}
+                {{/each}}
+              {{else}}
+                None
+              {{/if}}
+            </td>
+
+            <td>
+              <a class="button is-info is-small" href="/placemark/{{_id}}">
+                View
+              </a>
+            </td>
+            <td>
+              <a class="button is-danger is-small" href="/placemarks/delete/{{_id}}">
+                Delete
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+
+

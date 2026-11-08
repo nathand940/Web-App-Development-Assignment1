@@ -1,0 +1,44 @@
+{{> menu active="placemarks"}}
+
+<section class="section">
+  <div class="container">
+
+    <h1 class="title">Edit Placemark</h1>
+
+    <form action="/placemark/{{placemark._id}}/edit" method="POST" class="box">
+
+      <div class="field">
+        <label class="label">Name</label>
+        <input class="input" type="text" name="name" value="{{placemark.name}}" required />
+      </div>
+
+      <div class="field">
+        <label class="label">Description</label>
+        <input class="input" type="text" name="description" value="{{placemark.description}}" required />
+      </div>
+
+      <div class="field">
+        <label class="label">Location</label>
+        <input class="input" type="text" name="location" value="{{placemark.location}}" required />
+      </div>
+
+      <div class="field">
+        <label class="label">Category</label>
+        <div class="select is-fullwidth">
+          <select name="categoryId">
+            <option value="">None</option>
+            {{#each categories}}
+              <option value="{{_id}}" {{#ifEquals ../placemark.categoryId _id}}selected{{/ifEquals}}>
+                {{name}}
+              </option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <button class="button is-primary" type="submit">Save Changes</button>
+    </form>
+
+  </div>
+</section>
+

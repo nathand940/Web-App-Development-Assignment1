@@ -1,0 +1,129 @@
+<section class="section">
+  <div class="container">
+
+    <h1 class="title">Admin Dashboard</h1>
+
+    <!-- Summary Stats -->
+    <div class="columns">
+
+      <div class="column">
+        <div class="box has-text-centered">
+          <h2 class="subtitle">Users</h2>
+          <p class="title">{{userCount}}</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="box has-text-centered">
+          <h2 class="subtitle">Placemarks</h2>
+          <p class="title">{{placemarkCount}}</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="box has-text-centered">
+          <h2 class="subtitle">Categories</h2>
+          <p class="title">{{categoryCount}}</p>
+        </div>
+      </div>
+
+    </div>
+
+    <hr />
+
+    <!-- Analytics Section -->
+    <h2 class="subtitle">Analytics</h2>
+
+    <div class="columns">
+      <div class="column">
+        <div class="box">
+          <h3 class="subtitle has-text-centered">Placemarks per Category</h3>
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="box">
+          <h3 class="subtitle has-text-centered">Placemarks per User</h3>
+          <canvas id="userChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- User Table -->
+    <h2 class="subtitle">All Users</h2>
+
+    <table class="table is-fullwidth is-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each users}}
+          <tr>
+            <td>{{firstName}} {{lastName}}</td>
+            <td>{{email}}</td>
+            <td>
+              <a class="button is-danger is-small" href="/admin/delete/{{_id}}">
+                Delete
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  // Extract analytics data from controller
+  const categoryLabels = {{{json analytics.placemarksPerCategoryLabels}}};
+  const categoryCounts = {{{json analytics.placemarksPerCategoryCounts}}};
+
+  const userLabels = {{{json analytics.placemarksPerUserLabels}}};
+  const userCounts = {{{json analytics.placemarksPerUserCounts}}};
+
+  // Category Chart
+  new Chart(document.getElementById("categoryChart"), {
+    type: "bar",
+    data: {
+      labels: categoryLabels,
+      datasets: [{
+        label: "Placemarks per Category",
+        data: categoryCounts,
+        backgroundColor: "rgba(75, 192, 192, 0.6)"
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+
+  // User Chart
+  new Chart(document.getElementById("userChart"), {
+    type: "bar",
+    data: {
+      labels: userLabels,
+      datasets: [{
+        label: "Placemarks per User",
+        data: userCounts,
+        backgroundColor: "rgba(153, 102, 255, 0.6)"
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+</script>
+

@@ -1,0 +1,56 @@
+{{> menu active="placemarks"}}
+
+<section class="section">
+  <div class="container">
+
+    <h1 class="title">{{placemark.name}}</h1>
+
+    <div class="box">
+      <h2 class="subtitle">Details</h2>
+
+      <p><strong>Description:</strong> {{placemark.description}}</p>
+      <p><strong>Location:</strong> {{placemark.location}}</p>
+
+      {{#if category}}
+        <p><strong>Category:</strong> {{category.name}}</p>
+      {{else}}
+        <p><strong>Category:</strong> None</p>
+      {{/if}}
+    </div>
+
+    <hr />
+
+    <h2 class="subtitle">Images</h2>
+
+    <!-- Upload Form -->
+    <form action="/placemark/{{placemark._id}}/uploadimage" method="POST" enctype="multipart/form-data" class="box">
+      <div class="field">
+        <label class="label">Upload Image</label>
+        <input class="input" type="file" name="image" required />
+      </div>
+      <button class="button is-primary" type="submit">Upload</button>
+    </form>
+
+    <!-- Display Firebase Images -->
+    {{#if placemark.images}}
+      <div class="columns is-multiline">
+        {{#each placemark.images}}
+          <div class="column is-one-quarter">
+            <figure class="image is-4by3">
+              <img src="{{this}}" alt="Placemark Image" />
+            </figure>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <p>No images uploaded yet.</p>
+    {{/if}}
+
+    <hr />
+
+    <a class="button is-danger" href="/placemarks/delete/{{placemark._id}}">
+      Delete Placemark
+    </a>
+
+  </div>
+</section>
