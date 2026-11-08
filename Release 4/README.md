@@ -1,3 +1,7 @@
+**RELEASE 4**
+**Author: Nathan Dolan**
+**Student No: 20059337**
+
 **Description:**
 
 Placemark Coffee is a full‑stack web application developed for Web App Development Assignment 1. The system enables users to create, manage, categorize, and review placemarks representing coffee shops and related locations. It includes user authentication, category management, administrative controls, and image upload functionality via Firebase Storage.
