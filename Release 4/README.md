@@ -1,130 +1,144 @@
-README.md — Placemark Coffee (Release 4)
-Overview
+**Description:**
+
 Placemark Coffee is a full‑stack web application developed for Web App Development Assignment 1. The system enables users to create, manage, categorize, and review placemarks representing coffee shops and related locations. It includes user authentication, category management, administrative controls, and image upload functionality via Firebase Storage.
 
 Release 4 focuses on integrating Firebase for image handling, improving UI consistency, refining placemark management, and addressing several stability issues identified during development.
 
-Features Implemented (Release 4)
-Authentication
-User registration, login, and logout
+**Features Implemented**
 
-Session‑based authentication
+**Authentication:**
 
-Role‑based access control for administrative features
+• User registration, login, and logout
 
-Placemarks
-Create, edit, and delete placemarks
+• Session‑based authentication
 
-Assign placemarks to categories
+• Role‑based access control for administrative features
 
-Upload and display images using Firebase Storage
+**Placemarks**
 
-View detailed placemark information
+• Create, edit, and delete placemarks
 
-Categories
-Create and manage categories
+• Assign placemarks to categories
 
-Display placemarks associated with each category
+• Upload and display images using Firebase Storage
 
-Administration
-View all registered users
+• View detailed placemark information
 
-Delete users
+**Categories**
 
-Access system‑wide data for moderation
+• Create and manage categories
 
-User Interface
-Unified navigation bar with active link highlighting
+• Display placemarks associated with each category
 
-Consistent Bulma‑based layout
+**Administration**
 
-Improved view templates and partials
+• View all registered users
 
-Architecture
-Backend
-Node.js
+• Delete users
 
-Hapi.js
+• Access system‑wide data for moderation
 
-Handlebars templating engine
+**User Interface**
 
-Joi validation
+• Unified navigation bar with active link highlighting
 
-Firebase Storage SDK
+• Consistent Bulma‑based layout
 
-Session‑based authentication
+• Improved view templates and partials
 
-Frontend
-Handlebars views
+**Architecture**
+**Backend**
 
-Bulma CSS framework
+• Node.js
 
-Custom Handlebars helpers (e.g., ifEquals)
+• Hapi.js
 
-Storage
-Local JSON‑based data store
+• Handlebars templating engine
 
-Firebase Storage for image uploads
+• Joi validation
 
-Firebase Integration
-Firebase Storage is used to handle image uploads for placemarks. The workflow is as follows:
+• Firebase Storage SDK
 
-The user uploads an image through a multipart form.
+• Session‑based authentication
 
-The server receives the file buffer.
+**Frontend**
 
-The file is uploaded to Firebase Storage.
+• Handlebars views
 
-Firebase returns a publicly accessible URL.
+• Bulma CSS framework
 
-The URL is stored in the placemark object.
+• Custom Handlebars helpers (e.g., ifEquals)
 
-The image is rendered in the UI using the stored URL.
+**Storage**
 
-Known Issues with Firebase (Release 4)
-Upload Failures
+• Local JSON‑based data store
 
-Some uploads fail due to incorrect MIME types, missing file buffers, or misconfigured Firebase credentials.
+• Firebase Storage for image uploads
 
-Network instability can also cause intermittent failures.
+**Firebase Integration**
 
-Images Not Displaying
+• Firebase Storage is used to handle image uploads for placemarks. The workflow is as follows:
 
-In some cases, Firebase URLs are not saved correctly.
+• The user uploads an image through a multipart form.
 
-Incorrect Handlebars variable names or missing fields can result in broken image links.
+• The server receives the file buffer.
 
-Firebase Storage rules may block public access if not configured correctly.
+• The file is uploaded to Firebase Storage.
 
-Duplicate Uploads
+• Firebase returns a publicly accessible URL.
 
-Uploading the same file multiple times may result in overwriting or duplicate entries depending on naming conventions.
+• The URL is stored in the placemark object.
 
-Image Handling Issues
-Images Not Appearing in Placemark Cards
+• The image is rendered in the UI using the stored URL.
 
-Caused by missing image fields in placemark objects, incorrect template bindings, or incomplete Firebase responses.
+**Known Issues with Firebase**
 
-Upload Route Not Triggering
+**1. Upload Failures**
 
-Often due to missing multipart/form-data encoding in forms.
+• Some uploads fail due to incorrect MIME types, missing file buffers, or misconfigured Firebase credentials.
 
-Incorrect field names or missing Hapi payload configuration can prevent file buffers from being processed.
+• Network instability can also cause intermittent failures.
 
-Testing Issues
-Intermittent Test Failures
+**2. Images Not Displaying**
 
-Tests involving Firebase are not fully isolated or mocked, leading to inconsistent results.
+• In some cases, Firebase URLs are not saved correctly.
 
-Asynchronous operations may not be awaited correctly.
+• Incorrect Handlebars variable names or missing fields can result in broken image links.
 
-Test Suite Hanging
+• Firebase Storage rules may block public access if not configured correctly.
 
-Occurs when promises are not resolved or when external SDKs (such as Firebase) remain active.
+**3. Duplicate Uploads**
 
-Missing cleanup logic can cause the test runner to stall.
+• Uploading the same file multiple times may result in overwriting or duplicate entries depending on naming conventions.
 
-Setup Instructions
+**Image Handling Issues**
+
+**1. Images Not Appearing in Placemark Cards**
+
+• Caused by missing image fields in placemark objects, incorrect template bindings, or incomplete Firebase responses.
+
+**2. Upload Route Not Triggering**
+
+• Often due to missing multipart/form-data encoding in forms.
+
+• Incorrect field names or missing Hapi payload configuration can prevent file buffers from being processed.
+
+**Testing Issues**
+
+**1.Intermittent Test Failures**
+
+• Tests involving Firebase are not fully isolated or mocked, leading to inconsistent results.
+
+• Asynchronous operations may not be awaited correctly.
+
+**2.Test Suite Hanging**
+
+• Occurs when promises are not resolved or when external SDKs (such as Firebase) remain active.
+
+• Missing cleanup logic can cause the test runner to stall.
+
+**Setup Instructions**
+
 1. Install Dependencies
 
         npm install
@@ -145,42 +159,45 @@ Setup Instructions
 
    http://localhost:3000
 
-Application Functionality
-Once the application is running and accessible at http://localhost:3000, users can interact with the full Placemark Coffee system. The platform provides both standard user functionality and administrative capabilities.
+**Application Functionality**
 
-User Registration and Authentication
-Visitors can create an account using the Sign Up page and subsequently log in using their credentials. Session‑based authentication ensures that only registered users can access protected features such as placemark creation and category management.
+• Once the application is running and accessible at http://localhost:3000, users can interact with the full Placemark Coffee system. The platform provides both standard user functionality and administrative capabilities.
 
-Placemark Management
+**User Registration and Authentication**
+• Visitors can create an account using the Sign Up page and subsequently log in using their credentials. Session‑based authentication ensures that only registered users can access protected features such as placemark creation and category management.
+
+**Placemark Management**
 Authenticated users can create new placemarks representing coffee shops or related locations. Each placemark can include:
 
-Name
+• Name
 
-Description
+• Description
 
-Geographical coordinates
+• Geographical coordinates
 
-Category assignment
+• Category assignment
 
-An uploaded image (stored in Firebase Storage)
+• An uploaded image (stored in Firebase Storage)
 
 Users may also edit or delete their own placemarks. All placemarks are displayed in a structured interface, allowing users to browse and review entries.
 
-Category Management
-Users can create custom categories to organise their placemarks. Categories provide a way to group similar locations (e.g., “Cafés”, “Roasters”, “Study Spots”). Each category page displays all associated placemarks.
+**Category Management**
 
-Administrative Features
-Users with administrative privileges have access to an extended set of tools:
+• Users can create custom categories to organise their placemarks. Categories provide a way to group similar locations (e.g., “Cafés”, “Roasters”, “Study Spots”). Each category page displays all associated placemarks.
 
-User Management: Administrators can view all registered users and remove accounts when necessary.
+**Administrative Features**
 
-System Overview: Administrative dashboards provide visibility into the number of users, categories, and placemarks stored in the system.
+• Users with administrative privileges have access to an extended set of tools:
 
-Data Moderation: Administrators can oversee placemark content and ensure compliance with platform guidelines.
+• User Management: Administrators can view all registered users and remove accounts when necessary.
+
+• System Overview: Administrative dashboards provide visibility into the number of users, categories, and placemarks stored in the system.
+
+• Data Moderation: Administrators can oversee placemark content and ensure compliance with platform guidelines.
 
 These features support both general user interaction and structured system oversight, enabling Placemark Coffee to function as a complete, multi‑user web application.
 
-Folder Structure:
+**Folder Structure:**
 
 src/
   api/
@@ -196,51 +213,51 @@ test/
 package.json
 README.md
 
-References:
+**References:**
 
-Firebase (Storage, Firestore, Admin SDK, Uploading Images)
+• Firebase (Storage, Firestore, Admin SDK, Uploading Images)
 Pandey, M. (2025) How to upload image to Firebase Storage from your expressjs app. DEV Community.
 Available at: https://dev.to/madhavp/how-to-upload-image-to-firebase-storage-from-your-expressjs-app 
 
-Marckhoz (2024) express-firestore-jwt-api: Professional REST API with Firebase Firestore and JWT authentication. GitHub Repository.
+• Marckhoz (2024) express-firestore-jwt-api: Professional REST API with Firebase Firestore and JWT authentication. GitHub Repository.
 Available at: https://github.com/Marckhoz/express-firestore-jwt-api 
 
-JWT (Authentication, Route Protection, Token Issuance)
+• JWT (Authentication, Route Protection, Token Issuance)
 Charles, N. (2025) Building Secure APIs with Node.js and JWT Authentication. NIXX/DEV.
 Available at: https://nixx.dev/articles/building-secure-apis-with-node-js-and-jwt-authentication 
 
-DevSanyamSrivastava (2024) Backend Tutorial Project: Node.js, Express.js, JWT authentication, file uploads, controllers, routes. GitHub Repository.
+• DevSanyamSrivastava (2024) Backend Tutorial Project: Node.js, Express.js, JWT authentication, file uploads, controllers, routes. GitHub Repository.
 Available at: https://github.com/DevSanyamSrivastava/Project 
 
-pooja2s (2024) User Authentication Node.js JWT Token Post CRUD Operations. GitHub Repository.
+• pooja2s (2024) User Authentication Node.js JWT Token Post CRUD Operations. GitHub Repository.
 Available at: https://github.com/pooja2s/user-authentication-node-js-jwt-token-post-crud-operations 
 
-Multer (File Upload Middleware)
+• Multer (File Upload Middleware)
 Pandey, M. (2025) How to upload image to Firebase Storage from your expressjs app. DEV Community.
 (Contains Multer memory storage configuration and file filtering.)
 Available at: https://dev.to/madhavp/how-to-upload-image-to-firebase-storage-from-your-expressjs-app 
 
-pooja2s (2024) User Authentication Node.js JWT Token Post CRUD Operations. GitHub Repository.
+• pooja2s (2024) User Authentication Node.js JWT Token Post CRUD Operations. GitHub Repository.
 (Shows Multer usage for multipart/form-data uploads.)
 Available at: https://github.com/pooja2s/user-authentication-node-js-jwt-token-post-crud-operations 
 
-API Controllers, Routes, MVC Architecture
+• API Controllers, Routes, MVC Architecture
 Marckhoz (2024) express-firestore-jwt-api: Professional REST API with Firebase Firestore and JWT authentication. GitHub Repository.
 (Provides layered architecture: controllers, routes, services, middlewares.)
 Available at: https://github.com/Marckhoz/express-firestore-jwt-api 
 
-DevSanyamSrivastava (2024) Backend Tutorial Project: Node.js, Express.js, JWT authentication, file uploads, controllers, routes. GitHub Repository.
+• DevSanyamSrivastava (2024) Backend Tutorial Project: Node.js, Express.js, JWT authentication, file uploads, controllers, routes. GitHub Repository.
 Available at: https://github.com/DevSanyamSrivastava/Project 
 
-pooja2s (2024) User Authentication Node.js JWT Token Post CRUD Operations. GitHub Repository.
+• pooja2s (2024) User Authentication Node.js JWT Token Post CRUD Operations. GitHub Repository.
 (Shows controllers, routes, middlewares, and validation.)
 Available at: https://github.com/pooja2s/user-authentication-node-js-jwt-token-post-crud-operations
 
-Testing (JWT flows, API endpoints, middleware)
+• Testing (JWT flows, API endpoints, middleware)
 Charles, N. (2025) Building Secure APIs with Node.js and JWT Authentication. NIXX/DEV.
 (Provides testable JWT flows and token verification patterns.)
 Available at: https://nixx.dev/articles/building-secure-apis-with-node-js-and-jwt-authentication 
 
-Pandey, M. (2025) How to upload image to Firebase Storage from your expressjs app. DEV Community.
+• Pandey, M. (2025) How to upload image to Firebase Storage from your expressjs app. DEV Community.
 (Contains testing and verification section for Firebase uploads.)
 Available at: https://dev.to/madhavp/how-to-upload-image-to-firebase-storage-from-your-expressjs-app 
