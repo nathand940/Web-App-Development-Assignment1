@@ -1,7 +1,8 @@
-**Coffee Placemark — Release 3**
-**A Hapi.js + Handlebars + MongoDB Web Application**
+**RELEASE 3**
+
 **Author: Nathan Dolan**
-**Release Date: November 2026**
+
+**Student No: 20059337**
 
 **Overview**
 
