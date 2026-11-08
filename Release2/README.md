@@ -1,5 +1,8 @@
-**CoffeePlacemark — Release 2**
+**RELEASE 2**
+
 **Author: Nathan Dolan**
+
+**Student No: 20059337**
 
 CoffeePlacemark is a web application that allows users to create, manage, and explore coffee shop placemarks.
 Release 2 introduces the full Placemark Core, including persistent JSON storage, placemark creation, listing, deletion, and improved account administration.
